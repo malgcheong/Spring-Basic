@@ -3,18 +3,26 @@ package com.cw.sp1.repository;
 import com.cw.sp1.domain.Member;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@SpringBootTest
 public class MemoryMemberRepositoryTest {
-    MemoryMemberRepository repository = new MemoryMemberRepository();
+    MemberRepository repository;
 
-    @AfterEach
-    public void afterEach() {
-        repository.clearStore();
+    @Autowired
+    public MemoryMemberRepositoryTest(MemberRepository memberRepository){
+        this.repository = memberRepository;
     }
+
+//    @AfterEach
+//    public void afterEach() {
+//        repository.clearStore();
+//    }
     @Test
     public void save() {
         //given
